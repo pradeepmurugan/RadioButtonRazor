@@ -1,0 +1,34 @@
+﻿@model RadioButtonRazor.ViewModels.CreateQuestionViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<form asp-controller="Home" asp-action="CreateQuestion" method="post">
+    <div class="col-md-10">
+    <label> Enter the Question</label>
+    <input asp-for="@Model.QuestionText" type="text"/>
+        </div>
+    <div class="col-md-10">
+        <label>Enter  Choice 1</label>
+        <input asp-for="@Model.Choice1.ChoiceText" />
+        <input asp-for="@Model.Choice1.IsCorrectChoice" type="checkbox" value="true" />
+        </div>
+    <div class="col-md-10">
+        <label> Enter Choice 2</label>
+        <input asp-for="@Model.Choice2.ChoiceText" />
+        <input asp-for="@Model.Choice2.IsCorrectChoice" type="checkbox" value="false" />
+        </div>
+    <div class="col-md-10">
+        <label >Enter Choice 3</label>
+        <input asp-for="@Model.Choice3.ChoiceText" />
+        <input asp-for="@Model.Choice3.IsCorrectChoice" type="checkbox" value="false" />
+    </div>
+    <div class="col-md-10">
+        <label> Enter Choice 4</label>
+        <input asp-for="@Model.Choice4.ChoiceText" />
+        <input asp-for="@Model.Choice4.IsCorrectChoice" type="checkbox" value="false" />
+    </div>
+    <div class="col-md-10">
+        <input type="submit" value="Submit" />
+        </div>
+
+</form>

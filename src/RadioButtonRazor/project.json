@@ -1,4 +1,4 @@
-﻿{
+{
   "dependencies": {
     "Microsoft.NETCore.App": "1.1.0",
     "Microsoft.AspNetCore.Diagnostics": "1.1.0",
@@ -19,7 +19,12 @@
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
     "LiteDB": "3.0.1",
-    "Microsoft.AspNetCore.Mvc.TagHelpers": "1.1.1"
+    "Microsoft.AspNetCore.Mvc.TagHelpers": "1.1.1",
+    "Microsoft.EntityFrameworkCore": "1.1.0",
+    "Microsoft.AspNet.WebPages": "3.2.3",
+    "Microsoft.NETCore.Platforms": "1.1.0",
+    "Microsoft.AspNet.Razor": "3.2.3",
+    "Microsoft.AspNet.WebPages.Data": "3.2.3"
   },
 
   "tools": {
@@ -31,6 +36,7 @@
   "frameworks": {
     "netcoreapp1.0": {
       "imports": [
+        "net451",
         "dotnet5.6",
         "portable-net45+win8"
       ]

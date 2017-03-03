@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using LiteDB;
 using RadioButtonRazor.ViewModels;
 using RadioButtonRazor.Models;
+using Microsoft.EntityFrameworkCore;
+using WebMatrix.Data;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace RadioButtonRazor.Controllers
 {
@@ -18,8 +21,13 @@ namespace RadioButtonRazor.Controllers
         }
         public IActionResult Index()
         {
-            List<QuestionViewModel> qvmList = new List<QuestionViewModel>(); 
-            foreach(var question in _db.GetCollection<Question>("questions").FindAll())
+            
+            return View();
+        }
+        public IActionResult Quiz()
+        {
+            List<QuestionViewModel> qvmList = new List<QuestionViewModel>();
+            foreach (var question in _db.GetCollection<Question>("questions").FindAll())
             {
                 qvmList.Add(new QuestionViewModel { Question = question });
             }
@@ -27,6 +35,22 @@ namespace RadioButtonRazor.Controllers
             return View(qvm);
         }
 
+        // GET: Students/Create
+
+        public IActionResult CreateQuestion()
+        {           
+            return View(new CreateQuestionViewModel());
+        }
+        [HttpPost]
+        public IActionResult CreateQuestion(CreateQuestionViewModel cqvm)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.GetCollection<Question>("questions").Insert(cqvm.Question);
+                RedirectToAction("Index");
+            }
+            return View(cqvm);
+        }
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -34,10 +58,11 @@ namespace RadioButtonRazor.Controllers
             return View();
         }
 
-    
+
         public IActionResult Error()
         {
             return View();
         }
     }
 }
+

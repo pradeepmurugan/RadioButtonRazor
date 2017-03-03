@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace RadioButtonRazor.Models
 {
     public class Choice
     {
-        public String ChoiceText { get; set; }
+        private Func<IActionResult> create;
+
+        public string ChoiceText { get; set; }
         public bool IsCorrectChoice { get; set; } = true;
         public Choice()
         {

@@ -1,0 +1,26 @@
+﻿@model RadioButtonRazor.ViewModels.QuizViewModel
+@{
+    ViewData["Title"] = "Quiz";
+}
+
+<form asp-controller="Home" asp-action="Quiz">
+    @foreach (var questionvm in Model.QuestionViewModels)
+    {
+        <div>
+            <div>
+                <label>
+                    @questionvm.Question.QuestionText
+                </label>
+            </div>
+            <div>
+                @foreach (var choice in questionvm.Question.Choices)
+                {
+                    <span>
+                        <input asp-for="@questionvm.SelectedChoice" type="radio" value="@choice " /> @choice.ChoiceText
+                    </span>
+                }
+            </div>
+        </div>
+    }
+</form>
+

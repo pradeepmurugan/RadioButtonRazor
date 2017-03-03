@@ -36,6 +36,8 @@ namespace RadioButtonRazor
         public LiteDatabase InitializeDb()
         {
             var db = new LiteDatabase(@"C:\Users\Pradeep Murugan\Desktop\rbcore.db");
+          
+
             AddQuestions(db.GetCollection<Question>("questions"));
             return db;
         }
